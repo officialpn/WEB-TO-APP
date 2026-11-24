@@ -193,12 +193,31 @@ h1>span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit
 .button-spinner{display:none;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;position:absolute;right:18px}
 .submit-button.is-loading .button-spinner{display:block}
 .submit-button.is-loading .button-arrow{display:none}
+.submit-button .button-copy{transition:opacity .15s}
+.submit-button.is-loading .button-copy{opacity:0}
 .submit-footnote{font-size:9px;color:var(--faint);text-align:center;margin:12px 0 18px;letter-spacing:.2px}
 .submit-footnote span{color:var(--accent);margin-right:4px}
 
 /* ===== RESULT ===== */
-.result-panel{margin:14px 0 18px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#faf9ff}
-.result-panel[hidden]{display:none}
+.result-panel{
+  margin:14px 0 18px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#faf9ff;
+  min-height:72px;
+  max-height:72px;
+  overflow-y:auto;
+}
+.result-panel[hidden]{
+  display:block;
+  visibility:hidden;
+  border-color:transparent;
+  background:transparent;
+  min-height:72px;
+  max-height:72px;
+  padding:14px;
+}
 .result-panel.status-success{border-color:rgba(18,184,134,.3);background:rgba(18,184,134,.06)}
 .result-panel.status-error{border-color:rgba(229,72,77,.3);background:rgba(229,72,77,.06)}
 .result-top{display:flex;align-items:center;gap:9px}

@@ -19,24 +19,20 @@ let iconFileData = '';
 let packageNameWasEdited = false;
 
 /* ===== ZOOM BLOCK (SCROLL SAFE) ===== */
-// pinch zoom block (iOS)
 document.addEventListener('gesturestart', (e) => e.preventDefault());
 document.addEventListener('gesturechange', (e) => e.preventDefault());
 document.addEventListener('gestureend', (e) => e.preventDefault());
 
-// desktop ctrl+scroll zoom block
 window.addEventListener('wheel', (e) => {
   if (e.ctrlKey) e.preventDefault();
 }, { passive: false });
 
-// ctrl +/- keys zoom block
 window.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
     e.preventDefault();
   }
 });
 
-// full viewport height fix (mobile bars)
 function setFullHeight() {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
@@ -62,7 +58,7 @@ function packageNameFromAppName(value) {
   const suffix = value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[^a-z0-9_]+/g, '.').replace(/^\.+|\.+$/g, '').replace(/\.+/g, '.')
     .replace(/^[^a-z]+/, '') || 'myapp';
-  return `com.appfiy.${suffix}`;
+  return `com.appify.${suffix}`;
 }
 
 function validate() {
@@ -100,7 +96,7 @@ function validate() {
     valid = false;
   }
   if (!/^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+$/.test(packageName)) {
-    setError('package-error', 'USE LOWERCASE PACKAGE SEGMENTS STARTING WITH A LETTER, E.G. COM.PN.MYAPP.');
+    setError('package-error', 'USE LOWERCASE PACKAGE SEGMENTS STARTING WITH A LETTER, E.G. COM.APPIFY.MYAPP.');
     valid = false;
   }
   if (!versionName || versionName.length > 30) {
@@ -142,7 +138,7 @@ function findApkUrl(payload) {
 function showResult({ status, title, message, downloadUrl, details }) {
   resultPanel.className = `result-panel status-${status}`;
   resultPanel.replaceChildren();
-  resultPanel.hidden = false;
+  resultPanel.style.visibility = 'visible';
 
   const top = document.createElement('div');
   top.className = 'result-top';
@@ -294,7 +290,7 @@ clearFileButton.addEventListener('click', () => {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!validate()) {
-    resultPanel.hidden = true;
+    resultPanel.style.visibility = 'hidden';
     const firstInvalid = form.querySelector('.field-error:not(:empty)');
     firstInvalid?.previousElementSibling?.querySelector('input')?.focus();
     return;
@@ -310,7 +306,6 @@ form.addEventListener('submit', async (event) => {
   };
   submitButton.disabled = true;
   submitButton.classList.add('is-loading');
-  submitButton.querySelector('.button-copy').textContent = 'SENDING BUILD REQUEST…';
   showResult({ status: 'loading', title: 'SENDING YOUR BUILD REQUEST', message: 'CONNECTING TO THE BUILD SERVICE. THIS MAY TAKE A MOMENT.' });
 
   try {
@@ -354,6 +349,5 @@ form.addEventListener('submit', async (event) => {
   } finally {
     submitButton.disabled = false;
     submitButton.classList.remove('is-loading');
-    submitButton.querySelector('.button-copy').textContent = 'GENERATE APK';
   }
 });
