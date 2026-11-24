@@ -160,8 +160,8 @@ function showResult({ status, title, message, downloadUrl, details }) {
   if (downloadUrl) {
     const link = document.createElement('a');
     link.className = 'download-link';
-    link.href = downloadUrl;
-    link.target = '_blank';
+    link.href = `/api/download?url=${encodeURIComponent(downloadUrl)}`;
+    link.setAttribute('download', 'appify.apk');
     link.rel = 'noopener noreferrer';
     link.textContent = 'DOWNLOAD APK';
     const arrow = document.createElement('span');
