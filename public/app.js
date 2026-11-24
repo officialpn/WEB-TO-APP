@@ -18,6 +18,36 @@ const clearFileButton = document.querySelector('#clear-file');
 let iconFileData = '';
 let packageNameWasEdited = false;
 
+/* ===== ZOOM BLOCK (FULL SCREEN, NO ZOOM) ===== */
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+document.addEventListener('gesturechange', (e) => e.preventDefault());
+document.addEventListener('gestureend', (e) => e.preventDefault());
+
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) e.preventDefault();
+  lastTouchEnd = now;
+}, { passive: false });
+
+window.addEventListener('wheel', (e) => {
+  if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+
+window.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
+    e.preventDefault();
+  }
+});
+
+function setFullHeight() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+setFullHeight();
+window.addEventListener('resize', setFullHeight);
+window.addEventListener('orientationchange', setFullHeight);
+
+/* ===== HELPERS ===== */
 function parseWebUrl(value) {
   try {
     const url = new URL(value.trim());
@@ -35,7 +65,7 @@ function packageNameFromAppName(value) {
   const suffix = value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[^a-z0-9_]+/g, '.').replace(/^\.+|\.+$/g, '').replace(/\.+/g, '.')
     .replace(/^[^a-z]+/, '') || 'myapp';
-  return `com.aditya.${suffix}`;
+  return `com.appify.${suffix}`;
 }
 
 function validate() {
@@ -73,7 +103,7 @@ function validate() {
     valid = false;
   }
   if (!/^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+$/.test(packageName)) {
-    setError('package-error', 'USE LOWERCASE PACKAGE SEGMENTS STARTING WITH A LETTER, E.G. COM.ADITYA.MYAPP.');
+    setError('package-error', 'USE LOWERCASE PACKAGE SEGMENTS STARTING WITH A LETTER, E.G. COM.PN.MYAPP.');
     valid = false;
   }
   if (!versionName || versionName.length > 30) {
