@@ -1,1 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1116" />
+    <meta name="description" content="TURN YOUR WEBSITE INTO AN ANDROID APP PACKAGE. CREATE A WEB2APK BUILD IN A FEW SIMPLE STEPS." />
+    <title>APPIFY — BUILD YOUR ANDROID APP</title>
+    <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="APPIFY HOME">
+        <span class="brand-symbol"><span></span><span></span><span></span></span>
+        <span class="brand-name">APP<span>I</span>FY</span>
+        <span class="brand-badge">MAKER</span>
+      </a>
+      <div class="topbar-right">
+        <span class="service-indicator"><span class="pulse-dot"></span> BUILD SERVICE <span class="service-status">READY</span></span>
+        <a class="top-link" href="#how-it-works">HOW IT WORKS <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
 
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR WEBSITE, ON ANDROID <span class="eyebrow-index">01 / BUILD</span></div>
+          <h1 id="page-title">FROM WEB TO<br /><span>APP-READY.</span></h1>
+          <p class="hero-text">WRAP YOUR WEBSITE INTO AN ANDROID APP PACKAGE. ADD YOUR DETAILS, START THE BUILD, AND GET YOUR APK WHEN IT’S READY.</p>
+          <div class="hero-notes">
+            <div class="hero-note"><span class="note-check">✓</span><span>NO CODING REQUIRED</span></div>
+            <div class="hero-note"><span class="note-check">✓</span><span>MADE FOR ANDROID</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+            <div class="art-path path-one"></div><div class="art-path path-two"></div>
+            <div class="art-node node-web"><span class="globe-icon">◎</span><small>WEBSITE</small></div>
+            <div class="art-arrow">→</div>
+            <div class="art-node node-app"><span class="app-icon"><i></i><i></i><i></i><i></i></span><small>ANDROID APP</small></div>
+            <span class="art-coordinate coordinate-one">CONVERT / 01</span><span class="art-coordinate coordinate-two">APK · READY</span>
+          </div>
+        </div>
+
+        <section class="builder" aria-labelledby="builder-heading">
+          <div class="builder-topline"><span>NEW BUILD</span><span class="builder-step">STEP <b>01</b> <i>/</i> 01</span></div>
+          <div class="builder-heading-row">
+            <div><p class="section-kicker">LET’S GET YOUR APP STARTED</p><h2 id="builder-heading">BUILD YOUR APK</h2></div>
+            <div class="build-glyph" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <form id="build-form" novalidate>
+            <label class="field-label" for="website-url">WEBSITE URL <span class="required-mark">*</span></label>
+            <div class="input-wrap url-wrap"><span class="input-prefix" aria-hidden="true">↗</span><input id="website-url" name="websiteUrl" type="url" placeholder="HTTPS://YOURWEBSITE.COM" autocomplete="url" required /><span class="field-check" aria-hidden="true">✓</span></div>
+            <p class="field-hint">ENTER THE FULL WEB ADDRESS, INCLUDING HTTPS://</p>
+            <div class="field-error" id="website-error" aria-live="polite"></div>
+
+            <label class="field-label app-name-label" for="app-name">APP NAME <span class="required-mark">*</span></label>
+            <div class="input-wrap"><input id="app-name" name="appName" type="text" placeholder="E.G. MY AWESOME APP" maxlength="50" autocomplete="off" required /><span class="char-count"><span id="name-count">0</span>/50</span></div>
+            <p class="field-hint">THIS NAME APPEARS BENEATH YOUR APP ICON.</p>
+            <div class="field-error" id="name-error" aria-live="polite"></div>
+
+            <label class="field-label app-name-label" for="package-name">ANDROID PACKAGE NAME <span class="required-mark">*</span></label>
+            <div class="input-wrap"><input id="package-name" name="packageName" type="text" value="com.aditya.myapp" maxlength="255" autocomplete="off" required /></div>
+            <p class="field-hint">UNIQUE APP ID. AUTO-FILLS FROM THE APP NAME; YOU CAN EDIT IT.</p>
+            <div class="field-error" id="package-error" aria-live="polite"></div>
+
+            <div class="version-fields">
+              <div class="version-field">
+                <label class="field-label" for="version-name">VERSION NAME <span class="required-mark">*</span></label>
+                <div class="input-wrap"><input id="version-name" name="versionName" type="text" value="1.0.0" maxlength="30" required /></div>
+              </div>
+              <div class="version-field">
+                <label class="field-label" for="version-code">VERSION CODE <span class="required-mark">*</span></label>
+                <div class="input-wrap"><input id="version-code" name="versionCode" type="number" value="1" min="1" max="2100000000" step="1" required /></div>
+              </div>
+            </div>
+            <div class="version-errors"><div class="field-error" id="version-name-error" aria-live="polite"></div><div class="field-error" id="version-code-error" aria-live="polite"></div></div>
+
+            <div class="icon-field-head"><label class="field-label" for="app-icon">APP ICON <span class="optional-mark">OPTIONAL</span></label><span class="icon-preview" id="icon-preview"><span class="icon-placeholder">◇</span></span></div>
+            <div class="input-wrap"><input id="app-icon" name="icon" type="url" placeholder="HTTPS://YOURWEBSITE.COM/ICON.PNG" autocomplete="url" /><span class="char-count">PNG · 512 × 512</span></div>
+            <div class="upload-row">
+              <label class="upload-button" for="icon-file">↑ <span>UPLOAD IMAGE</span><input id="icon-file" type="file" accept="image/png,image/jpeg,image/webp" /></label>
+              <span class="selected-file" id="selected-file">PNG, JPG OR WEBP · MAX 5 MB</span>
+              <button class="clear-file" id="clear-file" type="button" hidden>REMOVE</button>
+            </div>
+            <p class="field-hint">PASTE AN IMAGE LINK OR UPLOAD A SQUARE ICON. IF BLANK, A DEFAULT ICON IS USED.</p>
+            <div class="field-error" id="icon-error" aria-live="polite"></div>
+
+            <button class="submit-button" id="submit-button" type="submit"><span class="button-copy">GENERATE APK</span><span class="button-arrow" aria-hidden="true">↗</span><span class="button-spinner" aria-hidden="true"></span></button>
+            <p class="submit-footnote"><span aria-hidden="true">⌁</span> YOUR BUILD REQUEST IS SENT SECURELY TO THE BUILD SERVICE.</p>
+          </form>
+          <section class="result-panel" id="result-panel" aria-live="polite" aria-atomic="true" hidden></section>
+          <div class="builder-footer"><span><span class="tiny-lock">⌑</span> BUILD CONFIGURED</span><span>ANDROID / APK</span></div>
+        </section>
+      </section>
+
+      <section class="process" id="how-it-works" aria-labelledby="process-heading">
+        <div class="process-heading"><div><p class="section-kicker">THREE STEPS. ONE APP.</p><h2 id="process-heading">SIMPLE BY DESIGN.</h2></div><span class="process-mark">02 — HOW IT WORKS</span></div>
+        <div class="process-steps">
+          <article class="process-step"><span class="step-number">01</span><div><h3>ADD YOUR DETAILS</h3><p>PASTE A WEBSITE LINK, CHOOSE AN APP NAME, AND ADD AN ICON IF YOU HAVE ONE.</p></div><span class="step-glyph" aria-hidden="true">⌘</span></article>
+          <article class="process-step"><span class="step-number">02</span><div><h3>START THE BUILD</h3><p>SEND YOUR CONFIGURATION TO THE BUILD SERVICE AND WATCH FOR ITS RESPONSE.</p></div><span class="step-glyph" aria-hidden="true">◉</span></article>
+          <article class="process-step"><span class="step-number">03</span><div><h3>GET YOUR APK</h3><p>WHEN THE SERVICE RETURNS A DOWNLOAD LINK, GRAB YOUR ANDROID PACKAGE.</p></div><span class="step-glyph" aria-hidden="true">↓</span></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="footer-brand" href="/">APP<span>I</span>FY<span class="footer-dot">.</span></a><span class="footer-credit">DEVELOPED BY <strong>PN</strong></span><span class="footer-end">A WEBSITE, WITH APP POTENTIAL <span>↗</span></span></footer>
+  </body>
+</html>
