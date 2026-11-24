@@ -21,9 +21,9 @@
   --mono:'El Messiri',sans-serif;
 }
 
-*{box-sizing:border-box;touch-action:manipulation}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%}
-html,body{width:100%;max-width:100vw;overflow-x:hidden}
+html,body{width:100%;max-width:100vw}
 body{
   margin:0;
   background:linear-gradient(180deg,#f7f5fd 0%,#efeafb 100%);
@@ -32,12 +32,11 @@ body{
   min-height:100vh;
   min-height:calc(var(--vh,1vh) * 100);
   overflow-x:hidden;
+  overflow-y:auto;
   text-transform:uppercase;
   -webkit-font-smoothing:antialiased;
-  touch-action:pan-y;
-  -ms-touch-action:pan-y;
-  overscroll-behavior-y:none;
   -webkit-tap-highlight-color:transparent;
+  touch-action:pan-y pinch-zoom;
 }
 body *{text-transform:uppercase}
 input,button,textarea,select{text-transform:uppercase;font-family:var(--sans)}

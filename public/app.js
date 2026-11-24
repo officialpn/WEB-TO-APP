@@ -18,28 +18,25 @@ const clearFileButton = document.querySelector('#clear-file');
 let iconFileData = '';
 let packageNameWasEdited = false;
 
-/* ===== ZOOM BLOCK (FULL SCREEN, NO ZOOM) ===== */
+/* ===== ZOOM BLOCK (SCROLL SAFE) ===== */
+// pinch zoom block (iOS)
 document.addEventListener('gesturestart', (e) => e.preventDefault());
 document.addEventListener('gesturechange', (e) => e.preventDefault());
 document.addEventListener('gestureend', (e) => e.preventDefault());
 
-let lastTouchEnd = 0;
-document.addEventListener('touchend', (e) => {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) e.preventDefault();
-  lastTouchEnd = now;
-}, { passive: false });
-
+// desktop ctrl+scroll zoom block
 window.addEventListener('wheel', (e) => {
   if (e.ctrlKey) e.preventDefault();
 }, { passive: false });
 
+// ctrl +/- keys zoom block
 window.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
     e.preventDefault();
   }
 });
 
+// full viewport height fix (mobile bars)
 function setFullHeight() {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
@@ -65,7 +62,7 @@ function packageNameFromAppName(value) {
   const suffix = value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[^a-z0-9_]+/g, '.').replace(/^\.+|\.+$/g, '').replace(/\.+/g, '.')
     .replace(/^[^a-z]+/, '') || 'myapp';
-  return `com.appify.${suffix}`;
+  return `com.appfiy.${suffix}`;
 }
 
 function validate() {
