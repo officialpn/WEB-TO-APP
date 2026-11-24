@@ -157,7 +157,7 @@ h1>span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit
 .icon-field-head .field-label{margin:0}
 .optional-mark{font-size:8px;color:var(--faint);margin-left:8px;font-weight:600}
 
-/* ===== FIXED ICON PREVIEW (size stuck) ===== */
+/* ===== ICON PREVIEW (STRICTLY FIXED) ===== */
 .icon-preview{
   width:32px;
   height:32px;
@@ -184,12 +184,68 @@ h1>span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit
 }
 .icon-placeholder{font-size:17px;color:var(--faint)}
 
-.upload-row{display:flex;align-items:center;gap:10px;margin-top:10px;min-width:0}
-.upload-button{height:34px;padding:0 12px;display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:10px;background:#faf9ff;color:var(--accent);font-size:10px;font-weight:600;white-space:nowrap;cursor:pointer;transition:.2s}
+/* ===== UPLOAD ROW (FULLY CONTROLLED) ===== */
+.upload-row{display:flex;align-items:center;gap:10px;margin-top:10px;min-width:0;width:100%}
+
+.upload-button{
+  position:relative;
+  height:34px;
+  padding:0 12px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  border:1.5px solid var(--line);
+  border-radius:10px;
+  background:#faf9ff;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:.2s;
+  overflow:hidden;
+  flex-shrink:0;
+}
 .upload-button:hover{background:var(--accent-soft);border-color:var(--accent)}
-.upload-button input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
-.selected-file{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--faint);font-size:9px}
-.clear-file{border:0;background:none;color:var(--muted);font-size:9px;font-weight:600;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+
+/* file input poori tarah chhupao - yeh hi layout bada karta tha */
+.upload-button input[type="file"]{
+  position:absolute;
+  width:0;
+  height:0;
+  opacity:0;
+  pointer-events:none;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  border:0;
+  padding:0;
+  margin:0;
+}
+
+.selected-file{
+  min-width:0;
+  flex:1 1 0;
+  max-width:130px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:var(--faint);
+  font-size:9px;
+}
+
+.clear-file{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:600;
+  cursor:pointer;
+  padding:6px 0;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  flex-shrink:0;
+}
 .clear-file:hover{color:var(--error)}
 .clear-file[hidden]{display:none}
 
@@ -317,4 +373,5 @@ h1>span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit
   .builder-footer{margin:0 -16px;padding:13px 16px}
   .upload-row{gap:7px}
   .upload-button{padding:0 9px;font-size:9px}
+  .selected-file{max-width:80px}
 }
