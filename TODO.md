@@ -1,0 +1,7 @@
+# TODO
+
+- [x] Web-to-APK request form: Provide a required website URL and app name, plus an optional app icon URL or direct image upload (PNG, JPG, or WEBP up to 5 MB). Convert uploaded images to a 512×512 PNG, show a preview, and allow removal. Validate the website URL and show clear, actionable messages for invalid or missing input. The API endpoint may separately reject a missing icon; use the documented fallback icon when the icon field is blank.
+- [x] API submission and status: Submit the form to `https://ft-web2apk.ftshehryar10044.workers.dev/api` as JSON with `websiteUrl`, `appName`, `icon`, `packageName`, `versionName`, and `versionCode`. Provide editable package/version fields with defaults, validate them, and show loading/progress feedback, then a clear success or failure status and actionable API error messages.
+- [x] Vercel clone API: Provide a standalone Vercel Node.js endpoint that accepts and forwards the same six required build fields, keeps the original API response shape and HTTP status, and adds top-level `developer: "Aditya"` to JSON object responses. Read the original API URL from a server-side environment variable and document deployment, CORS origin configuration, and the fact that CORS is not authentication.
+- [x] APK result: Present an APK download link when the API returns one; do not invent a link when no downloadable APK URL is present.
+- [x] Responsive branded interface: Deliver a polished responsive Web-to-APK maker with the visible credit “Developed by Aditya”.
